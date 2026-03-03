@@ -50,10 +50,12 @@ function authentication(req, res, next){
 
     const hashedPassword = await bcrypt.hash(password, 4 );
     console.log(hashedPassword);
+
     if(!foundUser){
         const user= await UserModel.create({
         email : email,
-        password : password,
+        password : hashedPassword,
+        salt : bcrypt,
         name : name
     })
   
