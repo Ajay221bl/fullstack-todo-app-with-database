@@ -1,0 +1,144 @@
+<html>
+    <head>
+        <title>
+            Todo app with mongodb database
+        </title>
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script>
+
+
+            //sending the signup request 
+            async function signup(){
+                const username = document.querySelector("#signUpUsername");
+                const email = document.querySelector("#signUpEmail")
+                const password = document.querySelector("#signUpPassword")
+                const response = await axios.post("http://localhost:3000/signup", {
+                    username : username,
+                    password : password
+                })
+
+                return response
+
+            }
+
+            async function signin(){
+                const username = document.querySelector("#signUpEmail")
+            }
+
+            function pageLoader(){
+                console.log(signup().status)
+                if(signup().status == 200){
+                    loadSignInPage()
+                }
+
+            }
+
+            // sign up frontend
+            function loadSignUpPage(){
+                const bodyTag = document.querySelector("body");
+                const headTag = document.createElement("h1");
+
+                const signUpUsernameInputTag = document.createElement("input");
+                signUpUsernameInputTag.setAttribute("placeholder", "username");
+                signUpUsernameInputTag.setAttribute("id", "signUpUsername")
+
+                const signUpEmailInputTag = document.createElement("input");
+                signUpEmailInputTag.setAttribute("id", "signUpEmail");
+                signUpEmailInputTag.setAttribute("placeholder", "email");
+
+                
+                const signUpPasswordInputTag = document.createElement("input");
+                signUpPasswordInputTag.setAttribute("placeholder", "password");
+                signUpPasswordInputTag.setAttribute("id", "signUpPassword");
+
+                const signUpButton = document.createElement("button");
+                signUpButton.setAttribute("id", "SignUpButton");
+                signUpButton.setAttribute("onclick", "pageLoader()")
+                signUpButton.innerHTML = "sign up";
+
+                headTag.innerHTML = "To do App";
+                bodyTag.appendChild(headTag);
+                
+                const appContainer = document.createElement("div");
+                appContainer.appendChild(signUpUsernameInputTag);
+                appContainer.appendChild(signUpEmailInputTag);
+                appContainer.appendChild(signUpPasswordInputTag);
+
+                appContainer.appendChild(signUpButton);
+                bodyTag.appendChild(appContainer);
+            }
+            
+             loadSignUpPage();
+
+            // sign in frontend
+            function loadSignInPage(){
+                const bodyTag = document.querySelector("body");
+                bodyTag.innerHTML = "";
+
+                const headTag = document.createElement("h1");
+
+              
+                const signInEmailInputTag = document.createElement("input");
+                signInEmailInputTag.setAttribute("id", "SignInEmail");
+
+                const signInPasswordInputTag = document.createElement("input");
+                signInPasswordInputTag.setAttribute("placeholder", "password")
+                signInPasswordInputTag.setAttribute("id", "signInPassword");
+
+                const signInButton = document.createElement("button");
+                signInButton.innerHTML = "sign in";
+
+                headTag.innerHTML = "To do App";
+                bodyTag.appendChild(headTag);
+                
+                const appContainer = document.createElement("div");
+                appContainer.appendChild(signInUsernameInputTag);
+                appContainer.appendChild(signInEmailInputTag);
+                appContainer.appendChild(signInButton);
+                bodyTag.appendChild(appContainer);
+            }
+
+            // todo page frontend
+            function loadTodosPage(){
+                const bodyTag = document.querySelector("body");
+                bodyTag.innerHTML = "";
+
+                const headTag = document.createElement("h1");
+                headTag.innerHTML = "Todo List";
+
+                bodyTag.appendChild(headTag);
+               
+                const todoInputEle = document.createElement("input");
+                todoInputEle.setAttribute("placeholder", "enter todo");
+                todoInputEle.setAttribute("id", "todoInputEle")
+                const addTaskButton = document.createElement("Add");
+                addTaskButton.setAttribute("id", "addTodoButton");
+                addTaskButton.setAttribute("onclick", "AddTodo()");
+
+                const todosContainer = document.createElement("div");
+                todosContainer.setAttribute("id", "todosContainer");
+
+                
+                const appContainer = document.createElement("div");
+                
+            
+                bodyTag.appendChild(appContainer);
+
+
+                // function for adding todo
+                function AddTodo(){
+                    
+                }
+
+
+            }
+
+
+
+
+        </script>
+    </body>
+</html>
