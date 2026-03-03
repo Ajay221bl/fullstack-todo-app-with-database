@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const ObjectId  = mongoose.ObjectId;
 
-mongoose.connect("mongodb+srv://new_user_1:2oBXLBvhdQ1fwxBm@cluster0.aupokvf.mongodb.net/todo-app-database")
+mongoose.connect("")
 // defining the schema for User
 const User = new Schema({
     email : {type: String, unique: true},
